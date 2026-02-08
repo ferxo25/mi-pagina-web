@@ -1,29 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Reporte accesible</title>
+<meta charset="UTF-8">
+<title>Reporte accesible</title>
+
+<style>
+/* Quitar márgenes */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* PDF como fondo */
+.pdf-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: -1;
+}
+
+/* Botón flotante */
+.boton-voz {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.boton-voz:hover {
+  background-color: #0056b3;
+}
+</style>
 </head>
 
 <body>
 
-  <h1>Reporte escolar</h1>
-  <button onclick="leerPagina()">🔊 Leer en voz alta</button>
+<!-- PDF de fondo -->
+<embed 
+  src="cursos_discapacidad_auditiva.pdf"
+  type="application/pdf"
+  class="pdf-fondo">
+
+<!-- Botón de lectura -->
+<button class="boton-voz" onclick="leerTexto()">🔊 Leer contenido</button>
 
 <script>
-function leerPagina() {
-  const texto = document.body.innerText;
+function leerTexto() {
+  const texto = `
+ Comenzamos
+
+“LA COMUNICACIÓN NO ES SOLO HABLAR, ES ENTENDER”
+
+
+
+sección 1
+
+¿Quiénes
+somos?
+
+
+
+¿Qué ofrecemos a las
+empresas?
+
+Brindamos servicios de comunicación
+accesible y formación en Lengua de Señas
+Mexicana, así como en competencias
+laborales, con el objetivo de impulsar su
+integración y crecimiento profesional dentro
+de las empresas.
+
+
+
+Existe una fuerte exclusión laboral de las personas sordas y una falta de accesibilidad efectiva. PRAGMA conecta a personas sordas en edad laboral con empresas comprometidas con la inclusión.
+
+¿Qué problemática se
+resuelve?
+
+
+
+Grupo Objetivo
+
+sección 2
+
+
+
+Está enfocado en personas con discapacidad auditiva que se encuentran sin empleo o con empleo precario, así como en empresas que buscan una inclusión real.
+
+
+La inclusión laboral es un derecho y genera beneficios como mayor compromiso, productividad y un mejor ambiente de trabajo.
+
+¿A qué grupo de personas
+va dirigido?
+
+
+
+Cursos de Lengua de Señas (LSM) y Comunicación:
+
+Este programa ofrece formación básica en lengua de señas para facilitar la comunicación cotidiana con personas sordas.
+
+Paquete de Capacitación Laboral y Habilidades Profesionales:
+
+Consiste en cursos de formación técnica impartidos en centros especializados, dirigidos a personas con discapacidad auditiva en áreas administrativas y técnicas, además de talleres de inclusión laboral y uso de tecnologías asistivas.
+
+Paquetes de nuestro servicio.
+
+
+
+Contáctanos
+
+(+52) 812-586-3457
+
+
+correo: contacto@pragma.com
+
+ubicación: Las Torres 443, Residencial
+Citalli, 52140, CDMX
+
+
+¡Apreciamos su
+atención!
+
+No dude en escribirnos o visitarnos para
+mas información.
+  `;
+
   const voz = new SpeechSynthesisUtterance(texto);
   voz.lang = "es-MX";
+  speechSynthesis.cancel(); // evita que se encime
   speechSynthesis.speak(voz);
 }
 </script>
-  <iframe 
-    src="https://pragmamx.my.canva.site/home"
-    width="100%"
-    height="600"
-    style="border:none;">
-  </iframe>
 
 </body>
 </html>
