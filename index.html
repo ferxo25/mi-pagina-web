@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte accesible</title>
+</head>
+
+<body>
+
+  <h1>Reporte escolar</h1>
+  <button onclick="leerPagina()">🔊 Leer en voz alta</button>
+
+<script>
+function leerPagina() {
+  const texto = document.body.innerText;
+  const voz = new SpeechSynthesisUtterance(texto);
+  voz.lang = "es-MX";
+  speechSynthesis.speak(voz);
+}
+</script>
+  <iframe 
+    src="https://pragmamx.my.canva.site/home"
+    width="100%"
+    height="600"
+    style="border:none;">
+  </iframe>
+
+</body>
+</html>
